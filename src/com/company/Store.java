@@ -40,4 +40,11 @@ public class Store {
             parking.add(car);
         }
     }
+
+    public void sellCar(Human human,int id){
+        Car temp = this.parking.get(id);
+        this.parking.remove(id);
+        human.cars.add(temp);
+    }
+
 }

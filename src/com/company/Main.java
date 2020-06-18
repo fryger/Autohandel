@@ -11,7 +11,6 @@ public class Main {
 
         Owner me = new Owner();
         System.out.println(me.CASH);
-        System.out.println(me.business.name);
 
         Car Brera = new Car("Alfa","Red","premium",10000,10);
         System.out.println(Brera.brand);
@@ -19,11 +18,14 @@ public class Main {
         //System.out.println(owners.get(0).brand);
 
 
-        Store Store= new Store();
-        Store.generateCar(15);
-        Store.generateVan(5);
+        Store store= new Store();
+        store.generateCar(15);
+        store.generateVan(5);
 
-
+        System.out.println(store.parking.size());
+        store.sellCar(me,12);
+        System.out.println(store.parking.size());
+        System.out.println(me.cars.get(0).brand);
 
 
     }
