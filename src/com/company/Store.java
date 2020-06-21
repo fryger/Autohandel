@@ -11,7 +11,7 @@ public class Store {
 
      List<Car> parking = new ArrayList<Car>();
 
-    private String[] brands = {"Alfa Romeo", "Ford", "Jaguar", "Mercedes", "Tata"};
+    static String[] brands = {"Alfa Romeo", "Ford", "Jaguar", "Mercedes", "Tata"};
     private String[] colors = {"Copperhead Pearl", "True Blue", "Black Gold", "Construction Yellow", "Western Brown"};
     private String[] segments = {"Premium","Standard","Budget"};
 
@@ -24,7 +24,7 @@ public class Store {
                     colors[randomGenerator.nextInt(colors.length)],
                     segments[randomGenerator.nextInt(segments.length)],
                     randomGenerator.nextInt(1000000),
-                    randomGenerator.nextInt(1000));
+                    randomGenerator.nextInt(1000)+1);
             parking.add(car);
         }
     }
@@ -43,8 +43,15 @@ public class Store {
 
     public void sellCar(Human human,int id){
         Car temp = this.parking.get(id);
-        this.parking.remove(id);
-        human.cars.add(temp);
+        System.out.println("Car cost: " + temp.value);
+        if(human.CASH >= temp.value){
+            human.CASH -= temp.value;
+            this.parking.remove(id);
+            human.cars.add(temp);
+            System.out.println("Account balance after purchase: " + human.CASH);
+        }else{
+            System.out.println("Insufficient founds");
+        }
     }
 
 }
