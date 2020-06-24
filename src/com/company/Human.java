@@ -6,7 +6,7 @@ import java.util.Random;
 
 public class Human {
     private Random randomGenerator = new Random();;
-    public Integer CASH = randomGenerator.nextInt(1000) + 1;;
+    public Integer CASH = randomGenerator.nextInt(800) + 200;;
 
     static public List<Car> cars = new ArrayList<Car>();
 }

@@ -24,7 +24,7 @@ public class Store {
                     colors[randomGenerator.nextInt(colors.length)],
                     segments[randomGenerator.nextInt(segments.length)],
                     randomGenerator.nextInt(1000000),
-                    randomGenerator.nextInt(1000)+1);
+                    randomGenerator.nextInt(920)+80);
             parking.add(car);
         }
     }
@@ -35,7 +35,7 @@ public class Store {
                     colors[randomGenerator.nextInt(colors.length)],
                     segments[randomGenerator.nextInt(segments.length)],
                     randomGenerator.nextInt(1000000),
-                    randomGenerator.nextInt(1000),
+                    randomGenerator.nextInt(920)+80,
                     randomGenerator.nextInt(100));
             parking.add(car);
         }
@@ -43,9 +43,10 @@ public class Store {
 
     public void sellCar(Human human,int id){
         Car temp = this.parking.get(id);
-        System.out.println("Car cost: " + temp.value);
-        if(human.CASH >= temp.value){
-            human.CASH -= temp.value;
+        Double addTax = ((2.0/100.0)*temp.value+temp.value);
+        System.out.println("Car cost: " + temp.value + " Tax: "+ Math.round((2.0/100.0)*temp.value));
+        if(human.CASH >= (int) Math.round(addTax)){
+            human.CASH -= (int) Math.round(addTax);
             this.parking.remove(id);
             human.cars.add(temp);
             System.out.println("Account balance after purchase: " + human.CASH);
