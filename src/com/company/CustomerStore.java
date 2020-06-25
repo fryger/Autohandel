@@ -7,20 +7,22 @@ import java.util.Random;
 public class CustomerStore {
     List<Customer> customerList = new ArrayList<Customer>();
 
-   void GenerateCustomer(){
-       Random randomGenerator = new Random();
-       String prefBrandFirst = Store.brands[randomGenerator.nextInt(Store.brands.length)];
-       String prefBrandSecond = Store.brands[randomGenerator.nextInt(Store.brands.length)];
-       while(prefBrandFirst == prefBrandSecond ){
-           prefBrandSecond = Store.brands[randomGenerator.nextInt(Store.brands.length)];
-       }
+    void GenerateCustomer(Integer a) {
+        for (int i = 1; i <= a; i++) {
+            Random randomGenerator = new Random();
+            String prefBrandFirst = Store.brands[randomGenerator.nextInt(Store.brands.length)];
+            String prefBrandSecond = Store.brands[randomGenerator.nextInt(Store.brands.length)];
+            while (prefBrandFirst == prefBrandSecond) {
+                prefBrandSecond = Store.brands[randomGenerator.nextInt(Store.brands.length)];
+            }
 
-       Customer customer = new Customer(
-               prefBrandFirst,
-               prefBrandSecond,
-               new Random().nextInt(25)==0,
-               new Random().nextInt(25)==0
-       );
-       customerList.add(customer);
-   }
+            Customer customer = new Customer(
+                    prefBrandFirst,
+                    prefBrandSecond,
+                    new Random().nextInt(25) == 0,
+                    new Random().nextInt(25) == 0
+            );
+            customerList.add(customer);
+        }
+    }
 }

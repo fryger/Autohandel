@@ -19,8 +19,11 @@ public class Main {
         workshop.add(Janusz);
         workshop.add(Marian);
         workshop.add(Adrian);
-        store.generateCar(15);
-        store.generateVan(15);
+        store.generateCar(25);
+        store.generateVan(5);
+        CustomerStore customerStore = new CustomerStore();
+        customerStore.GenerateCustomer(10);
+
         Scanner scanner = new Scanner(System.in);
         Boolean quit = true;
         while(quit) {
@@ -28,6 +31,8 @@ public class Main {
             System.out.println("2. Purchase car ");
             System.out.println("3. List your cars ");
             System.out.println("4. Repair car ");
+            System.out.println("5. List customers ");
+            System.out.println("6. Sell car ");
 
         int choice = scanner.nextInt();
             switch (choice) {
@@ -100,6 +105,39 @@ public class Main {
 
                     break;
                 case 5:
+
+
+                    System.out.println("Customer list");
+
+                    String leftAlignFormatCustomer = "| %-3d | %-10s | %-22s | %-12s | %-9s |%n";
+
+                    System.out.format("+-----+------------+------------------------+--------------+-----------+%n");
+                    System.out.format("| ID  |    Cash    |     Preferred Brand    | Want Broken? | Want Van? |%n");
+                    System.out.format("+-----+------------+------------------------+--------------+-----------+%n");
+                    for (int i = 0; i < customerStore.customerList.size(); i++) {
+                        System.out.format(
+                                leftAlignFormatCustomer,
+                                i,
+                                customerStore.customerList.get(i).CASH,
+                                customerStore.customerList.get(i).prefBrand,
+                                customerStore.customerList.get(i).wantBroken,
+                                customerStore.customerList.get(i).wantVan
+                        );
+                    }
+                    System.out.format("+-----+------------+------------------------+--------------+-----------+%n");
+
+                    break;
+                case 6:
+                    if(me.cars.size() == 0){
+                        System.out.println("You don't have any car");
+                        break;
+                    }
+                    int sellCarChooice = scanner.nextInt();
+                    int clientId = scanner.nextInt();
+                    int price = scanner.nextInt();
+                    customerStore.customerList.get(clientId).sellCarCheck(me,sellCarChooice,price);
+                    break;
+                case 7:
                     quit = false;
                     break;
                 default:
