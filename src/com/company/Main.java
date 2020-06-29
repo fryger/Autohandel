@@ -132,10 +132,27 @@ public class Main {
                         System.out.println("You don't have any car");
                         break;
                     }
+                    System.out.println("Which car do you want to sell? [ID]");
                     int sellCarChooice = scanner.nextInt();
+                    if(me.cars.get(sellCarChooice).isDirty == true){
+                        System.out.println("Car must be clean before selling to customer!");
+                        System.out.println("Do you want clean it now? [0- no; 1- yes]");
+                        int clean = scanner.nextInt();
+                        if(clean == 1){
+                            me.washCar(sellCarChooice);
+                        }else{
+                            break;
+                        }
+                    }
+                    System.out.println("Which customer do you want to sell it to? [ID]");
                     int clientId = scanner.nextInt();
+                    System.out.println("How much do you want to put it up for sale?");
                     int price = scanner.nextInt();
                     customerStore.customerList.get(clientId).sellCarCheck(me,sellCarChooice,price);
+                    if(customerStore.customerList.get(clientId).transactionStatus){
+                        customerStore.customerList.remove(clientId);
+                        customerStore.GenerateCustomer(2);
+                    }
                     break;
                 case 7:
                     quit = false;
