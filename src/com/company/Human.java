@@ -9,4 +9,5 @@ public class Human {
     public Integer CASH = randomGenerator.nextInt(800) + 200;;
 
     static public List<Car> cars = new ArrayList<Car>();
+    static public List<String> movementsList = new ArrayList<String>();
 }

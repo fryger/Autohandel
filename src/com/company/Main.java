@@ -1,6 +1,7 @@
 package com.company;
 
 
+import java.sql.SQLOutput;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Random;
@@ -9,7 +10,7 @@ import java.util.Scanner;
 public class Main {
 
     public static void main(String[] args) {
-
+        Random randomGenerator = new Random();
         Owner me = new Owner();
         Store store= new Store();
         List<Mechanic> workshop = new ArrayList<Mechanic>();
@@ -33,6 +34,10 @@ public class Main {
             System.out.println("4. Repair car ");
             System.out.println("5. List customers ");
             System.out.println("6. Sell car ");
+            System.out.println("7. Buy Ad ");
+            System.out.println("8. Account balance ");
+            System.out.println("9. Transaction history ");
+            System.out.println("10. Car repair history ");
 
         int choice = scanner.nextInt();
             switch (choice) {
@@ -155,6 +160,47 @@ public class Main {
                     }
                     break;
                 case 7:
+                    System.out.println("Marketing");
+
+                    System.out.println("0. Local newspaper" + " Cost: 100");
+                    System.out.println("1. Online Ad" + " Cost: 50");
+                    int adid = scanner.nextInt();
+                    System.out.println(adid);
+                    if(adid == 0) {
+                        if (me.CASH >= 40) {
+                            me.CASH -= 40;
+                            int randomClient = randomGenerator.nextInt(3) + 1;
+                            customerStore.GenerateCustomer(randomClient);
+                            System.out.println(randomClient + " new customers have arrived");
+                            me.movementsList.add("You bought newspaper Ad, " + randomClient + " new customers arrived");
+                        }
+                    }
+                    if(adid == 1) {
+                        if (me.CASH >= 20) {
+                            me.CASH -= 20;
+                            int randomClient = randomGenerator.nextInt(3) + 1;
+                            customerStore.GenerateCustomer(randomClient);
+                            System.out.println("One new customers have arrived");
+                            me.movementsList.add("You bought Online Ad, one new customer arrived");
+                        }
+                    }
+                    break;
+                case 8:
+                    System.out.println("Your account balance: " + me.CASH);
+                    break;
+                case 9:
+                    System.out.println("Movements count: " + me.movementsList.size());
+                    for(int j=0; j< me.movementsList.size();j++){
+                        System.out.println(j+1 + ".  "+me.movementsList.get(j));
+                    }
+                    break;
+                case 10:
+                    System.out.println("Lookup car repair history");
+                    System.out.println("Provide car ID");
+                    int carChoiceHistory = scanner.nextInt();
+                    me.carHistory(carChoiceHistory);
+                    break;
+                case 11:
                     quit = false;
                     break;
                 default:

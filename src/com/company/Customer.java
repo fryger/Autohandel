@@ -42,6 +42,7 @@ public class Customer extends Human {
             human.cars.remove(id);
             System.out.println("Samochód został sprzedany");
             transactionStatus = true;
+            human.movementsList.add("Car " + Human.cars.get(id).brand + " was sold to " + this.getClass().getSimpleName() + " for " + price);
         }
     }
 }

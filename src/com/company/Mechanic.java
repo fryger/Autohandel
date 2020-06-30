@@ -45,30 +45,40 @@ public void repCar(Owner owner,Integer carid){
             owner.cars.get(carid).engine = true && !failureChance;
             if(owner.cars.get(carid).engine == true) {
                 owner.cars.get(carid).value *= 2;
+                owner.movementsList.add("Car " + owner.cars.get(carid).brand + " engine has been repaired");
+                owner.cars.get(carid).repairList.add("Engine was repaired for " + engineRepPrice);
             }
         }
         if(owner.cars.get(carid).transmission == false){
             owner.cars.get(carid).transmission = true && !failureChance;
             if(owner.cars.get(carid).transmission == true) {
                 owner.cars.get(carid).value += ((50 / 100) * owner.cars.get(carid).value);
+                owner.movementsList.add("Car " + owner.cars.get(carid).brand + " transmission has been repaired");
+                owner.cars.get(carid).repairList.add("Transmission was repaired for " + transmissionRepPrice);
             }
         }
         if(owner.cars.get(carid).body == false){
             owner.cars.get(carid).body = true && !failureChance;
             if(owner.cars.get(carid).body == true) {
                 owner.cars.get(carid).value += ((50 / 100) * owner.cars.get(carid).value);
+                owner.movementsList.add("Car " + owner.cars.get(carid).brand + " body has been repaired");
+                owner.cars.get(carid).repairList.add("Body was repaired for " + bodyRepPrice);
             }
         }
         if(owner.cars.get(carid).suspension == false) {
             owner.cars.get(carid).suspension = true && !failureChance;
             if (owner.cars.get(carid).suspension == true) {
                 owner.cars.get(carid).value += ((20 / 100) * owner.cars.get(carid).value);
+                owner.movementsList.add("Car " + owner.cars.get(carid).brand + " suspension has been repaired");
+                owner.cars.get(carid).repairList.add("Suspension was repaired for " + suspensionRepPrice);
             }
         }
         if(owner.cars.get(carid).brakes == false){
             owner.cars.get(carid).brakes = true && !failureChance;
             if(owner.cars.get(carid).brakes == true) {
                 owner.cars.get(carid).value += ((10 / 100) * owner.cars.get(carid).value);
+                owner.movementsList.add("Car " + owner.cars.get(carid).brand + " brakes has been repaired");
+                owner.cars.get(carid).repairList.add("Brakes was repaired for " + brakesRepPrice);
             }
         }
         if(owner.cars.get(carid).engine && owner.cars.get(carid).transmission && owner.cars.get(carid).body && owner.cars.get(carid).suspension && owner.cars.get(carid).brakes) {

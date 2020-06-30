@@ -1,5 +1,7 @@
 package com.company;
 
+import java.util.ArrayList;
+import java.util.List;
 import java.util.Random;
 
 public class Car {
@@ -9,7 +11,7 @@ public class Car {
     public String segment;
     public Integer mileage;
     public Integer value;
-
+    static public List<String> repairList = new ArrayList<String>();
 
     public Boolean brakes = new Random().nextInt(25)!=0;
     public Boolean suspension = new Random().nextInt(25)!=0;

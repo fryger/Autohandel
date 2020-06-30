@@ -50,6 +50,7 @@ public class Store {
             this.parking.remove(id);
             human.cars.add(temp);
             System.out.println("Account balance after purchase: " + human.CASH);
+            human.movementsList.add("Car " + temp.brand + " was added to " + human.getClass().getSimpleName() + " parking lot");
         }else{
             System.out.println("Insufficient founds");
         }
